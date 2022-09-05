@@ -1,7 +1,4 @@
 package com.epam.mjc.io;
-
-import jdk.internal.net.http.common.Log;
-
 import java.io.*;
 
 
@@ -32,6 +29,7 @@ public class FileReader {
                 }
             }
         } catch (FileNotFoundException e) {
+
         } catch (IOException e) {
         }
 
