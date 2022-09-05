@@ -28,9 +28,8 @@ public class FileReader {
                     word = "";
                 }
             }
-        } catch (FileNotFoundException e) {
-
-        } catch (IOException e) {
+        }catch (IOException e) {
+            e.printStackTrace();
         }
 
         return profle;
