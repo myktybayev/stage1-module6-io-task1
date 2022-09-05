@@ -8,24 +8,28 @@ public class FileReader {
         Profile profle = null;
         try(FileInputStream fileInputStream = new FileInputStream(file.getPath())) {
             int ch = fileInputStream.read();
-            String word = "", name ="", email="", age="", phone="";
+            StringBuilder word = new StringBuilder();
+            String name ="";
+            String email="";
+            String age="";
+            String phone="";
             while(ch != -1) {
-                word = word + ""+(char)ch;
+                word.append((char) ch);
                 ch = fileInputStream.read();
 
                 if(ch=='\n'){
-                    if(word.contains("Name")){
-                        name = word.substring(word.indexOf(' ')+1);
-                    }else if(word.contains("Email")) {
-                        email = word.substring(word.indexOf(' ')+1);
-                    }else if(word.contains("Age")) {
-                        age = word.substring(word.indexOf(' ')+1);
-                    }else if(word.contains("Phone")) {
-                        phone = word.substring(word.indexOf(' ')+1);
+                    if(word.toString().contains("Name")){
+                        name = word.substring(word.toString().indexOf(' ')+1);
+                    }else if(word.toString().contains("Email")) {
+                        email = word.substring(word.toString().indexOf(' ')+1);
+                    }else if(word.toString().contains("Age")) {
+                        age = word.substring(word.toString().indexOf(' ')+1);
+                    }else if(word.toString().contains("Phone")) {
+                        phone = word.substring(word.toString().indexOf(' ')+1);
                         profle = new Profile(name, Integer.parseInt(age), email, Long.parseLong(phone));
                     }
 
-                    word = "";
+                    word = new StringBuilder();
                 }
             }
         }catch (IOException e) {
